@@ -5,13 +5,16 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-import {SampleQuery} from "../../graphql-types"
+import {MarkdownsQuery} from "../../graphql-types"
 
 interface Props {
-  data: SampleQuery;
+  data: MarkdownsQuery;
 }
 
-const IndexPage: React.FC<Props> = ({data}) => (
+const IndexPage: React.FC<Props> = ({data}) => {
+  const {frontmatter, html} = data.allMarkdownRemark.nodes[0]
+
+  return (
   <Layout>
     <Seo title="Home" />
     <h1>Hi people</h1>
@@ -28,18 +31,25 @@ const IndexPage: React.FC<Props> = ({data}) => (
     <p>
       <Link to="/page-2/">Go to page 2</Link> <br />
       <Link to="/using-typescript/">Go to "Using TypeScript"</Link> <br />
-      <Link to="/blog-post/">{data.allFile.nodes[0].name}</Link>
+      <h1>{frontmatter.title}</h1>
+      <div dangerouslySetInnerHTML={{__html: data.allMarkdownRemark.nodes[0].html}} />
+      {/* <Link to="/blog-post/">{data.allMarkdownRemark.nodes[0].html}</Link> */}
     </p>
   </Layout>
-)
+)}
 
 export default IndexPage
 
 export const query = graphql`
-  query Sample{
-    allFile {
+  query markdowns{
+    allMarkdownRemark {
       nodes {
-        name
+        frontmatter {
+          path
+          date
+          title
+        }
+        html
       }
     }
   }

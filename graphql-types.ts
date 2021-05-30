@@ -3282,10 +3282,13 @@ export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
 
-export type SampleQueryVariables = Exact<{ [key: string]: never; }>;
+export type MarkdownsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SampleQuery = { allFile: { nodes: Array<Pick<File, 'name'>> } };
+export type MarkdownsQuery = { allMarkdownRemark: { nodes: Array<(
+      Pick<MarkdownRemark, 'html'>
+      & { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'path' | 'date' | 'title'>> }
+    )> } };
 
 export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
 
