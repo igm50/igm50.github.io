@@ -12,7 +12,6 @@ interface Props {
 }
 
 const IndexPage: React.FC<Props> = ({ data }) => {
-  const { frontmatter, html } = data.allMarkdownRemark.nodes[0]
 
   return (
     <Layout>
@@ -31,14 +30,15 @@ const IndexPage: React.FC<Props> = ({ data }) => {
       <p>
         <Link to="/page-2/">Go to page 2</Link> <br />
         <Link to="/using-typescript/">Go to "Using TypeScript"</Link> <br />
-        <h1>{frontmatter.title}</h1>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: data.allMarkdownRemark.nodes[0].html,
-          }}
-        />
-        {/* <Link to="/blog-post/">{data.allMarkdownRemark.nodes[0].html}</Link> */}
       </p>
+      <ul>
+        {data.allMarkdownRemark.nodes.map(article => (
+          <li key={article.frontmatter.title}>
+            <Link to={article.path}>{article.frontmatter.title}</Link>
+          </li>
+        ))}
+        <li></li>
+      </ul>
     </Layout>
   )
 }
@@ -54,7 +54,9 @@ export const query = graphql`
           date
           title
         }
-        html
+        path: gatsbyPath(
+          filePath: "/articles/{MarkdownRemark.frontmatter__title}"
+        )
       }
     }
   }
