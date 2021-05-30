@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet"
 // import '../css/blog-post.css'; // make it pretty!
 
 export default function Template({
-  data // this prop will be injected by the GraphQL query we'll write in a bit
+  data, // this prop will be injected by the GraphQL query we'll write in a bit
 }) {
   const { markdownRemark: post } = data // data.markdownRemark holds your post data
   // return (
@@ -19,7 +19,5 @@ export default function Template({
   //     </div>
   //   </div>
   // )
-  return (
-    <div>{post}</div>
-  )
+  return <div>{post}</div>
 }
