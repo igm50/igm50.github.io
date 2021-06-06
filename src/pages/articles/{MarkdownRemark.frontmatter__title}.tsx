@@ -1,30 +1,23 @@
 import * as React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
+
+import { ArticleQuery } from "../../../graphql-types"
 
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 
-import { ArticleQuery } from "../../../graphql-types"
+import ArticleBody from "./Article"
 
 interface Props {
   data: ArticleQuery
 }
 
-const Article: React.FC<Props> = ({ data }) => {
-  const { frontmatter, html } = data.markdownRemark
-
-  return (
-    <Layout>
-      <Seo title="Home" />
-      <h1>{frontmatter.title}</h1>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: html,
-        }}
-      />
-    </Layout>
-  )
-}
+const Article: React.FC<Props> = ({ data }) => (
+  <Layout>
+    <Seo title="Home" />
+    <ArticleBody data={data} />
+  </Layout>
+)
 
 export default Article
 

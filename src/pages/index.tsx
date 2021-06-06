@@ -1,12 +1,12 @@
 import * as React from "react"
 import { graphql, Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
 import * as dayjs from "dayjs"
+
+import { MarkdownsQuery, MarkdownRemark } from "../../graphql-types"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-
-import { MarkdownsQuery, MarkdownRemark } from "../../graphql-types"
+import ArticleBody from "./articles/Article"
 
 interface Props {
   data: MarkdownsQuery
@@ -25,28 +25,19 @@ const IndexPage: React.FC<Props> = ({ data }) => {
   return (
     <Layout>
       <Seo title="Home" />
-      <h1>Hi people</h1>
-      <p>Welcome to your new Gatsby site.</p>
-      <p>Now go build something great.</p>
-      <StaticImage
-        src="../images/gatsby-astronaut.png"
-        width={300}
-        quality={95}
-        formats={["AUTO", "WEBP", "AVIF"]}
-        alt="A Gatsby astronaut"
-        style={{ marginBottom: `1.45rem` }}
-      />
-      <p>
-        <Link to="/page-2/">Go to page 2</Link> <br />
-        <Link to="/using-typescript/">Go to "Using TypeScript"</Link> <br />
-      </p>
+      <ul>
+        {data.allMarkdownRemark.nodes.sort(compareArticle).map(article => (
+          <li key={article.frontmatter.title}>
+            <ArticleBody data={{ markdownRemark: article }}></ArticleBody>
+          </li>
+        ))}
+      </ul>
       <ul>
         {data.allMarkdownRemark.nodes.sort(compareArticle).map(article => (
           <li key={article.frontmatter.title}>
             <Link to={article.path}>{article.frontmatter.title}</Link>
           </li>
         ))}
-        <li></li>
       </ul>
     </Layout>
   )
@@ -63,6 +54,7 @@ export const query = graphql`
           date
           title
         }
+        html
         path: gatsbyPath(
           filePath: "/articles/{MarkdownRemark.frontmatter__title}"
         )
