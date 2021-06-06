@@ -1,17 +1,26 @@
 import * as React from "react"
 import { graphql, Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import * as dayjs from "dayjs"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-import { MarkdownsQuery } from "../../graphql-types"
+import { MarkdownsQuery, MarkdownRemark } from "../../graphql-types"
 
 interface Props {
   data: MarkdownsQuery
 }
 
 const IndexPage: React.FC<Props> = ({ data }) => {
+  const compareArticle = (
+    a: Pick<MarkdownRemark, "frontmatter">,
+    b: Pick<MarkdownRemark, "frontmatter">
+  ) => {
+    return dayjs(a.frontmatter.date).isBefore(dayjs(b.frontmatter.date))
+      ? 1
+      : -1
+  }
 
   return (
     <Layout>
@@ -32,7 +41,7 @@ const IndexPage: React.FC<Props> = ({ data }) => {
         <Link to="/using-typescript/">Go to "Using TypeScript"</Link> <br />
       </p>
       <ul>
-        {data.allMarkdownRemark.nodes.map(article => (
+        {data.allMarkdownRemark.nodes.sort(compareArticle).map(article => (
           <li key={article.frontmatter.title}>
             <Link to={article.path}>{article.frontmatter.title}</Link>
           </li>

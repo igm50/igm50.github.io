@@ -4,7 +4,7 @@ import { graphql, Link } from "gatsby"
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 
-import {ArticleQuery} from "../../../graphql-types"
+import { ArticleQuery } from "../../../graphql-types"
 
 interface Props {
   data: ArticleQuery
