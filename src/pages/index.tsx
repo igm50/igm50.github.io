@@ -6,14 +6,14 @@ import { MarkdownsQuery, MarkdownRemark } from "../../graphql-types"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import ArticleBody from "./articles/Article"
+import ArticleBody from "../components/ArticleBody"
 
 interface Props {
   data: MarkdownsQuery
 }
 
 const IndexPage: React.FC<Props> = ({ data }) => {
-  const compareArticle = (
+  const newToTop = (
     a: Pick<MarkdownRemark, "frontmatter">,
     b: Pick<MarkdownRemark, "frontmatter">
   ) => {
@@ -25,20 +25,23 @@ const IndexPage: React.FC<Props> = ({ data }) => {
   return (
     <Layout>
       <Seo title="Home" />
-      <ul>
-        {data.allMarkdownRemark.nodes.sort(compareArticle).map(article => (
-          <li key={article.frontmatter.title}>
-            <ArticleBody data={{ markdownRemark: article }}></ArticleBody>
-          </li>
-        ))}
-      </ul>
-      <ul>
-        {data.allMarkdownRemark.nodes.sort(compareArticle).map(article => (
-          <li key={article.frontmatter.title}>
-            <Link to={article.path}>{article.frontmatter.title}</Link>
-          </li>
-        ))}
-      </ul>
+      <div className="container">
+        {data.allMarkdownRemark.nodes.sort(newToTop).map((article, index) =>
+          index == 0 ? (
+            <div key={article.frontmatter.date} className="card">
+              <div className="card-content content">
+                <ArticleBody data={{ markdownRemark: article }}></ArticleBody>
+              </div>
+            </div>
+          ) : (
+            <div key={article.frontmatter.date} className="card mt-5">
+              <div className="card-content content">
+                <ArticleBody data={{ markdownRemark: article }}></ArticleBody>
+              </div>
+            </div>
+          )
+        )}
+      </div>
     </Layout>
   )
 }

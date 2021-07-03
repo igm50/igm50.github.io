@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { ArticleQuery } from "../../../graphql-types"
+import { ArticleQuery } from "../../graphql-types"
 
 interface Props {
   data: ArticleQuery

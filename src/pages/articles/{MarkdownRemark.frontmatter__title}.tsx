@@ -6,7 +6,7 @@ import { ArticleQuery } from "../../../graphql-types"
 import Layout from "../../components/layout"
 import Seo from "../../components/seo"
 
-import ArticleBody from "./Article"
+import ArticleBody from "../../components/ArticleBody"
 
 interface Props {
   data: ArticleQuery

@@ -1,9 +1,10 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import "bulma/css/bulma.css"
 
 import Header from "./header"
-import "bulma/css/bulma.css"
+import "./layout.css"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
