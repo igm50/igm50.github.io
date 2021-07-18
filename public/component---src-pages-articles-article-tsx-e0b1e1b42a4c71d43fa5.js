@@ -1,0 +1,2 @@
+(self.webpackChunkmarkdown_blog=self.webpackChunkmarkdown_blog||[]).push([[322],{6084:function(e,t,n){"use strict";n.r(t);var r=n(7294);t.default=function(e){var t=e.data.markdownRemark,n=t.frontmatter,a=t.html;return r.createElement(r.Fragment,null,r.createElement("h1",null,n.title),r.createElement("div",{dangerouslySetInnerHTML:{__html:a}}))}}}]);
+//# sourceMappingURL=component---src-pages-articles-article-tsx-e0b1e1b42a4c71d43fa5.js.map

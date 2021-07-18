@@ -1,10 +1,12 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "markdown-blog",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Gatsby で作成したマークダウン式ブログ",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Keisuke Igimi <keisuke.igimi@gmail.com>",
   "dependencies": {
+    "bulma": "^0.9.3",
+    "dayjs": "^1.10.5",
     "gatsby": "^3.4.1",
     "gatsby-plugin-gatsby-cloud": "^2.4.1",
     "gatsby-plugin-image": "^1.4.0",
@@ -13,6 +15,7 @@
     "gatsby-plugin-react-helmet": "^4.4.0",
     "gatsby-plugin-sharp": "^3.4.1",
     "gatsby-source-filesystem": "^3.4.0",
+    "gatsby-transformer-remark": "^4.2.0",
     "gatsby-transformer-sharp": "^3.4.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -20,6 +23,7 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "gatsby-plugin-graphql-codegen": "^2.7.1",
     "prettier": "2.2.1"
   },
   "keywords": [
