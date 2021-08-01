@@ -53,14 +53,10 @@ export const query = graphql`
     allMarkdownRemark {
       nodes {
         frontmatter {
-          path
           date
           title
         }
         html
-        path: gatsbyPath(
-          filePath: "/articles/{MarkdownRemark.frontmatter__title}"
-        )
       }
     }
   }

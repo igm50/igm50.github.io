@@ -1,4 +1,5 @@
 import * as React from "react"
+import dayjs from "dayjs"
 
 import { ArticleQuery } from "../../graphql-types"
 
@@ -8,10 +9,13 @@ interface Props {
 
 const ArticleBody: React.FC<Props> = ({ data }) => {
   const { frontmatter, html } = data.markdownRemark
+  const date = React.useMemo(() => dayjs(frontmatter.date), [frontmatter])
 
   return (
     <React.Fragment>
-      <h1>{frontmatter.title}</h1>
+      <div>
+        <span className="tag is-light">{date.format("YYYY年M月D日")}</span>
+      </div>
       <div
         dangerouslySetInnerHTML={{
           __html: html,
