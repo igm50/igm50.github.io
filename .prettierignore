@@ -2,4 +2,6 @@
 package.json
 package-lock.json
 public
+docs
+src/markdown
 graphql-types.ts

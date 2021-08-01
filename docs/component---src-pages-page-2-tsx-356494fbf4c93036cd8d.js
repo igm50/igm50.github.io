@@ -1,2 +1,0 @@
-(self.webpackChunkmarkdown_blog=self.webpackChunkmarkdown_blog||[]).push([[473],{1922:function(e,t,n){"use strict";n.r(t);var l=n(7294),a=n(5444),o=n(2755),c=n(9470);t.default=function(){return l.createElement(o.Z,null,l.createElement(c.Z,{title:"Page two"}),l.createElement("h1",null,"Hi from the second page"),l.createElement("p",null,"Welcome to page 2"),l.createElement(a.Link,{to:"/"},"Go back to the homepage"))}}}]);
-//# sourceMappingURL=component---src-pages-page-2-tsx-356494fbf4c93036cd8d.js.map

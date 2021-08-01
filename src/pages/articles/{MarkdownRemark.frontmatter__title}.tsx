@@ -25,7 +25,6 @@ export const query = graphql`
   query article($id: String) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
-        path
         date
         title
       }

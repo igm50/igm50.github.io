@@ -646,7 +646,6 @@ export type MarkdownRemarkGatsbyPathArgs = {
 
 export type MarkdownRemarkFrontmatter = {
   title?: Maybe<Scalars['String']>;
-  path?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['Date']>;
 };
 
@@ -1189,7 +1188,6 @@ export type MarkdownRemarkFilterInput = {
 
 export type MarkdownRemarkFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
-  path?: Maybe<StringQueryOperatorInput>;
   date?: Maybe<DateQueryOperatorInput>;
 };
 
@@ -1443,7 +1441,6 @@ export type FileFieldsEnum =
   | 'childrenMarkdownRemark'
   | 'childrenMarkdownRemark___id'
   | 'childrenMarkdownRemark___frontmatter___title'
-  | 'childrenMarkdownRemark___frontmatter___path'
   | 'childrenMarkdownRemark___frontmatter___date'
   | 'childrenMarkdownRemark___excerpt'
   | 'childrenMarkdownRemark___rawMarkdownBody'
@@ -1500,7 +1497,6 @@ export type FileFieldsEnum =
   | 'childrenMarkdownRemark___internal___type'
   | 'childMarkdownRemark___id'
   | 'childMarkdownRemark___frontmatter___title'
-  | 'childMarkdownRemark___frontmatter___path'
   | 'childMarkdownRemark___frontmatter___date'
   | 'childMarkdownRemark___excerpt'
   | 'childMarkdownRemark___rawMarkdownBody'
@@ -2835,7 +2831,6 @@ export type MarkdownRemarkEdge = {
 export type MarkdownRemarkFieldsEnum =
   | 'id'
   | 'frontmatter___title'
-  | 'frontmatter___path'
   | 'frontmatter___date'
   | 'excerpt'
   | 'rawMarkdownBody'
@@ -3318,7 +3313,7 @@ export type ArticleQueryVariables = Exact<{
 
 export type ArticleQuery = { markdownRemark?: Maybe<(
     Pick<MarkdownRemark, 'html'>
-    & { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'path' | 'date' | 'title'>> }
+    & { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title'>> }
   )> };
 
 export type MarkdownsQueryVariables = Exact<{ [key: string]: never; }>;
@@ -3326,8 +3321,7 @@ export type MarkdownsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type MarkdownsQuery = { allMarkdownRemark: { nodes: Array<(
       Pick<MarkdownRemark, 'html'>
-      & { path: MarkdownRemark['gatsbyPath'] }
-      & { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'path' | 'date' | 'title'>> }
+      & { frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title'>> }
     )> } };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
